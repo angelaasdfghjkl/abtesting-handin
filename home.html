@@ -2,7 +2,7 @@
 
 <html>
   <head>
-    <title>INSERT TITLE HERE!</title>
+    <title>A/B Testing</title>
     <link rel="stylesheet" href="index.css">
     <!-- TODO: add additional links here! e.g. fonts, icons, more stylesheets, etc. -->
     <meta content="width=device-width, initial-scale=1" name="viewport" />
@@ -10,5 +10,57 @@
 
   <body>
     <!-- TODO: put your HTML code here! -->
+    <h1><span>A/B Testing</span><h1>
+    <h2>Context</h2>
+      <p>Our cactus selling website has been suffering financially and we want to investigate the reason behind our declining sales numbers this quarter. After much deliberation, we decided to design an experiment: set up two separate websites and test our customers' shopping experience in the following 2 areas: time to complete the task of buying $150 worth of cacti and rate of return. This A/B test will help determine whether our existing website needs to be redesigned or remained the same. The data will inform our decision, helping better our services and attract more revenue. Here's to hoping!
+      </p>
+
+    <h2>Hypothesis</h2>
+    <p><b>I. Time to Completion: the time it takes to order >$150 worth of cacti in your cart</b></p>
+    <ul>
+      <li>Null Hypothesis: The time to completion of Version A will be equal to the time to completion of Version B</li>
+      <li>Alternative Hypothesis: The time to completion of Version A will be less than the time to completion of Version B</li>
+    </ul>
+
+      <p>Why: Version A’s shopping cart button is left-aligned like the rest of the page elements so it will be easy to spot. Version B’s shopping cart is right-aligned and doesn’t follow the rhythm of the rest of the page. Theoretically, the user’s eye will be directed to a button that fits into the structure of the page rather than one that is immensely different from the format of nearby elements. If a user were to scroll down to check out, they will likely continue browsing leftwards and spot the button in Version A quicker.</p>
+
+      <p><b>II. Return Rate: the number of times a user returned to the original cacti ordering page</b></p>
+      <ul>
+        <li>Null Hypothesis: The return rate of Version A will be equal to the return rate of Version B</li>
+        <li>Alternative Hypothesis: The return rate of Version A will be less than the return rate of Version B</li>
+      </ul>
+      <p>Why: Version B has a marble background, which can be too stimulating. Compared to the plain pistachio background, this patterned background is really busy and disruptive. Overall, the marble is a stark contrast from pistacchio and could be a bit visually distracting. The marble will potentially hinder the shoppers’ experience and make customers return to the original page more than usual. The goal is to streamline the shopping experience so it would be helpful to test whether a plain background would decrease a user’s need to frequently go back to the catalogue and speed up the checkout process. Version A's plain pistachio page is the baseline control group and version B’s marble page is the experimental group that tests our user return rate theory.</p>
+      <h2>Data Collection</h2>
+      <img class="responsive center" src="version-a.png" alt="version A" width="300" height="100">
+      <img class="responsive center" src="version-b.png" alt="version B" width="300" height="100">
+        <p>In order to test the null hypotheses, I hosted two versions of the website online-- Version A as the control group and Version B as the experimental group with the altered background and button placement. Each version has a 50% chance of displaying and data will be collected from users visiting the website as they attempt to order >$150 worth of cacti. Afterwards, the data is filtered and compared to determine how the users’ metrics (time to completion and return rate) differ with respect to their corresponding version of the site.</p>
+        <p>I cleaned up the data by removing users who visited the site but did nothing (didn’t press any buttons or take any action). The useful, cleansed data was gathered by reading the log and applying the following logic:
+        </p>
+        <ul>
+          <li>Time to Complete: Subtracting the original timestamp (when the user first opened the page) from their last timestamp (when they complete the transaction at checkout or whatever their last action may be, i.e. going back to the original page or adding another item to the cart) </li>
+          <li>Rate of Return: if a user finishes adding items to the cart and proceeds to page C and then goes back to the original shopping page (page A or B), then that constitutes a return</li>
+        </ul>
+        <p>It is important to know that there are some special outlier cases such as <b>user “sksctkdl”</b> who took action on the page but refreshed it and continued using the other version of the page, so this user’s data was accounted for in both version A and B. There were also cases where users continued to add items to the cart after they’ve already checked out, in that case their final timestamp will be used in the equation.</p>
+        <h2>Conclusions</h2>
+        <p>The calculations are completed through running the corresponding Python Scripts for Statistical Analysis. Two tests were run to determine our metrics: one-sided T-Test for the difference in means (time to completion) and Chi-Square Test of Homogeneity (return rate). The results were:
+        </p>
+        <ul>
+          <li>The time to complete for test version A is significantly less than that of version B. Our experimental data provides support that the design of A (plain pistachio green background and left-aligned shopping cart button) results in a shorter shopping journey. This is beneficial because customers who finish their checkout process faster are potentially going to buy sooner. In comparison to customers who meander and have trouble with our interface, these customers will likely bring in more revenue. This shows us that version A stands out as the winning website design to lessen the time needed to get to the checkout page and encourage users to finish their transaction sooner.
+          </li>
+          <li>The return rate of version A and version B are comparable. This means that the design changes in version B did not significantly impact how frequently users return to the original catalogue page. Changing the background image and shopping cart location does not alter the users’ need to return to the original page. There is no substantive difference between version A and B so there is no clear preferred design in terms of user return rate</li>
+        </ul>
+
+            <img class="responsive center" src="abinfographic.png" alt="A/B testing infographic" width="300" height="100">
+
+        <h2>Lessons Learned</h2>
+        <p>Through this A/B Testing process, I learned a great deal and have quite a few takeaways</p>
+        <ul>
+          <li>The results confirmed that design principles like affordances and alignment/grouping are crucial in building a positive user experience. Efficient organization of information can aid an user’s journey to accomplishing their goal while poor design hinders an interface’s potential. The hierarchy and balance that an interface strikes can point a confused user to the right direction. However, even the slightest change in spacing can lead users astray, so every element in the design process must be fully contemplated and tested. Designers have to adhere to principles and test theories instead of applying their ideological assumptions without proper confirmation.
+          </li>
+          <li>Statistical analysis can help build the bridge between theoretical and practical solutions-- (dis)proving hypotheses in order to build the next actionable step with tangible results
+          </li>
+          <li>There were limitations in the diversity of test subjects. Due to the nature of the experiment, most users of the website were Brown University students (same age group, similar lifestyle and comparable shopping habits). If the subjects hailed from different backgrounds, the test could better mimic real life and result in more conclusive data</li>
+          <li>The sample size should also be increased to produce more accurate data and broaden the scale</li>
+        </ul>
   </body>
 </html>
