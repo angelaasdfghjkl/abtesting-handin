@@ -1,1 +1,47 @@
 /* Put your style information here! */
+body {
+  background-image: url('bgimage.jpg');
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: cover;
+}
+
+h1, h2, h3, h4{
+  text-align: center;
+}
+
+
+.responsive {
+  max-height: 100%;
+  max-width: 100%;
+  height: auto;
+}
+
+span{
+  background-color: #ddd;
+}
+
+p {
+  margin-left: auto;
+  margin-right: auto;
+  width: 25em;
+  text-align: center;
+  background-color:#FFF5EE;
+  opacity:0.6;
+}
+
+li {
+  list-style: inside;
+  margin-left: auto;
+  margin-right: auto;
+  width: 25em;
+  background-color:#FFF5EE;
+  opacity:0.6;
+}
+
+img {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 60%;
+}
